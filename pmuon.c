@@ -27,9 +27,14 @@ void set_pmu(void* dummy) {
     printk("We have %llu configurable event counters on Core %d\n",
             (v >> 11) & 0x1F, smp_processor_id());
 
-    // 5. Set six event counter registers (Project Assignment you need to IMPLEMENT)
+    // 5. Set event counter registers (Assignment you need to IMPLEMENT)
 
 }
+
+void stop_pmu(void* dummy) {
+    // 6. Read and disable event counter registers (Assignment you need to IMPLEMENT)
+}
+
 
 
 int init_module(void) {
@@ -38,8 +43,9 @@ int init_module(void) {
     printk("Ready to use PMU\n");
     return 0;
 }
-
+    
 void cleanup_module(void) {
     printk("PMU Kernel Module Off\n");
+    on_each_cpu(stop_pmu, NULL, 1);
 }
 
