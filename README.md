@@ -44,20 +44,24 @@ To compile and run this kernel module, ensure that you have the following:
    sudo insmod pmuon.ko
    ```
 
-6. Verify that the module has been loaded successfully:
+6. Execute your workload. (For example, use provided matmul.c)
 
    ```
-   dmesg 
+   ./matmul
    ```
-
-   You should see the "pmuon" module listed.
    
 7. Unload the Kernel module:
 
    ```
    sudo rmmod pmuon
    ```
+8. Verify that the module has been loaded successfully:
 
+   ```
+   dmesg 
+   ```
+
+   You should see the "pmuon" module and the measurements.
 
 ## Usage
 
